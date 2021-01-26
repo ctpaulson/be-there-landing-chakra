@@ -1,19 +1,12 @@
 import React from "react";
 
-import {
-  Box,
-  Heading,
-  Text,
-  SimpleGrid,
-  Divider,
-  Image
-} from "@chakra-ui/react";
+import { Box, Heading, Text, SimpleGrid, Divider } from "@chakra-ui/react";
 
 import Hero from "../components/sections/Hero";
 import LandingLayout from "../components/layouts/LandingLayout";
 import Feature from "../components/ui/Feature";
 
-export default function Landing() {
+export default function Home() {
   return (
     <LandingLayout>
       <Hero
@@ -58,10 +51,6 @@ export default function Landing() {
             description="In-person guests upload photos and videos of your event. You and your guests (in-person or virtual) can access them later."
           />
         </SimpleGrid>
-      </Box>
-      <Box bg="black" h="200px" w="100%" textAlign="center" p="10">
-        <Text color="white">Make sure everyone you love can Be There.</Text>
-        <Image src="/logo-white-vertical.png" h="100px"></Image>
       </Box>
     </LandingLayout>
   );
