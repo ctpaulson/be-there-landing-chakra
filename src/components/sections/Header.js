@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink as RouterLink } from "react-router-dom";
 import {
   Box,
   Flex,
   Button,
   Image,
-  Link as ChakraLink,
+  Link,
   useBreakpointValue,
   Menu,
   MenuButton,
@@ -16,16 +16,19 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
-const CustomMenuItem = ({ children, isLast, to = "/", ...rest }) => {
+const NavItem = ({ children, isLast, to = "/", ...rest }) => {
   return (
-    <ChakraLink
+    <Link
       mb={{ base: isLast ? 0 : 8, sm: 0 }}
       mr={{ base: 0, sm: isLast ? 0 : 8 }}
       display="block"
       {...rest}
+      as={RouterLink}
+      to={to}
+      activeStyle={{ fontWeight: "bold" }}
     >
-      <Link to={to}>{children}</Link>
-    </ChakraLink>
+      {children}
+    </Link>
   );
 };
 
@@ -46,13 +49,13 @@ const Header = (props) => {
       bg={["white"]}
       boxShadow="lg"
       zIndex="3"
-      minH="85px"
+      minH="95px"
       h={{ base: "15vw", md: "12vw", lg: "9vw", xl: "6vw" }}
       position="fixed"
       {...props}
     >
       <Flex align="center" minW="250px" maxH="40px">
-        <Link to="/">
+        <Link to="/" as={RouterLink}>
           <Image src={imgSrc} alt="Be There logo" maxH="30px" />
         </Link>
       </Flex>
@@ -62,24 +65,25 @@ const Header = (props) => {
           as={IconButton}
           icon={<HamburgerIcon />}
           variant="ghost"
+          size="lg"
           display={{ base: "block", md: "none" }}
         >
           Actions
         </MenuButton>
         <MenuList>
-          <Link to="/features">
+          <RouterLink to="/features">
             <MenuItem>Features</MenuItem>
-          </Link>
-          <Link to="/pricing">
+          </RouterLink>
+          <RouterLink to="/pricing">
             <MenuItem>Pricing</MenuItem>
-          </Link>
-          <Link to="/faq">
+          </RouterLink>
+          <RouterLink to="/faq">
             <MenuItem>FAQ</MenuItem>
-          </Link>
+          </RouterLink>
           <MenuDivider />
-          <Link to="/signup">
+          <RouterLink to="/signup">
             <MenuItem>Sign Up</MenuItem>
-          </Link>
+          </RouterLink>
         </MenuList>
       </Menu>
 
@@ -89,15 +93,15 @@ const Header = (props) => {
       >
         <Flex
           align="center"
-          justify={["center", "space-between", "flex-end", "flex-end"]}
-          direction={["column", "column", "row", "row"]}
-          pt={[4, 4, 0, 0]}
+          justify="flex-end"
+          direction="row"
+          pt="0"
           bg="white"
         >
-          <CustomMenuItem to="/features">Features </CustomMenuItem>
-          <CustomMenuItem to="/pricing">Pricing </CustomMenuItem>
-          <CustomMenuItem to="/faq">FAQ </CustomMenuItem>
-          <Link to="/signup" isLast>
+          <NavItem to="/features">Features </NavItem>
+          <NavItem to="/pricing">Pricing </NavItem>
+          <NavItem to="/faq">FAQ </NavItem>
+          <RouterLink to="/signup" isLast>
             <Button
               bg="white"
               color="black"
@@ -112,7 +116,7 @@ const Header = (props) => {
             >
               Sign Up
             </Button>
-          </Link>
+          </RouterLink>
         </Flex>
       </Box>
     </Flex>
