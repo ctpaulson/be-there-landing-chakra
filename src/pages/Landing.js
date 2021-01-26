@@ -1,6 +1,13 @@
 import React from "react";
 
-import { Box, Heading, Text, SimpleGrid, Divider } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Text,
+  SimpleGrid,
+  Divider,
+  Image
+} from "@chakra-ui/react";
 
 import Hero from "../components/sections/Hero";
 import LandingLayout from "../components/layouts/LandingLayout";
@@ -54,6 +61,7 @@ export default function Landing() {
       </Box>
       <Box bg="black" h="200px" w="100%" textAlign="center" p="10">
         <Text color="white">Make sure everyone you love can Be There.</Text>
+        <Image src="/logo-white-vertical.png" h="100px"></Image>
       </Box>
     </LandingLayout>
   );
